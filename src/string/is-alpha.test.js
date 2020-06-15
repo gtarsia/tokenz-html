@@ -1,5 +1,4 @@
 import test from 'ava'
-import dummee from 'dummee'
 import isAlpha from './is-alpha'
 
 test('isAlpha should work correctly', (t) => {

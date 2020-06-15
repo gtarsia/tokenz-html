@@ -72,14 +72,14 @@ export default class TextWalker {
 
   walk(fns) {
     let token = null
-    fns.find(fn => {
+    fns.find((fn) => {
       this.snaps.push(this.pos)
       try {
         token = fn()
       } catch (err) {
         if (/Cancelled/.test(err.name)) {
           this.pos = this.snaps.pop()
-          return
+          return null
         }
         throw err
       }

@@ -9,11 +9,12 @@ function readUntil(walker, strs, slice = true) {
   if (i === -1) {
     i = walker.text.length
   }
-  const pos = walker.pos
+  const { pos } = walker
   walker.pos = i
   if (slice) {
     return walker.text.slice(pos, i)
   }
+  return true
 }
 
 export default stubIfTest(readUntil)

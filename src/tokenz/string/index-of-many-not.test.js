@@ -1,5 +1,4 @@
 import test from 'ava'
-import dummee from 'dummee'
 import indexOfManyNot from './index-of-many-not'
 
 const text = 'qwe1asd2zxc3'

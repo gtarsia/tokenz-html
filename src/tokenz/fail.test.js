@@ -1,6 +1,6 @@
-import test from 'ava'
-import dummee from 'dummee'
-import fail from './fail'
+// import test from 'ava'
+// import dummee from 'dummee'
+// import fail from './fail'
 
-test('fail should work correctly', (t) => {
-})
+// test('fail should work correctly', (t) => {
+// })

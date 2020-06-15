@@ -34,6 +34,6 @@ test('peek with count > 1 should call slice on text', (t) => {
   const text = { [i + pos]: result, slice }
   const walker = { text, pos }
   const count = 4
-  t.deepEqual(peek(walker, i), result)
+  t.deepEqual(peek(walker, i, count), result)
   t.deepEqual(slice.calls, [])
 })

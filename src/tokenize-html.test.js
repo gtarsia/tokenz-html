@@ -1,5 +1,4 @@
 import test from 'ava'
-import dummee from 'dummee'
 import tokenizeHtml from './tokenize-html'
 import { START_TAG, TEXT, END_TAG } from './token-types'
 

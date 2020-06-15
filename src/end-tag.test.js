@@ -9,7 +9,7 @@ import { END_TAG } from './token-types'
 
 function run(t, text) {
   const walker = new TextWalker(text)
-  const result =  endTag(walker)
+  const result = endTag(walker)
   t.deepEqual(walker.isEnd(), true)
   return result
 }

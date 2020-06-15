@@ -15,7 +15,7 @@ function token(name, attrs) {
 
 function run(t, text) {
   const walker = new TextWalker(text)
-  const result =  startTag(walker)
+  const result = startTag(walker)
   t.deepEqual(walker.isEnd(), true)
   return result
 }
@@ -37,7 +37,8 @@ test('startTag should work correctly', (t) => {
   t.deepEqual(run(t, '<aa a="a">'), token('aa', [{ name: 'a', value: 'a' }]))
   t.deepEqual(run(t, "<aa a='a'>"), token('aa', [{ name: 'a', value: 'a' }]))
   t.deepEqual(run(t, "<aa a='a' >"), token('aa', [{ name: 'a', value: 'a' }]))
-  t.deepEqual(run(t, "<aa a='a<\">' >"), token('aa', [{ name: 'a', value: 'a<\">' }]))
+  /* eslint-disable-next-line quotes */
+  t.deepEqual(run(t, `<aa a='a<">' >`), token('aa', [{ name: 'a', value: 'a<">' }]))
   const attrs = [
     { name: 'a', value: 'a' },
     { name: 'b', value: 'b' },
