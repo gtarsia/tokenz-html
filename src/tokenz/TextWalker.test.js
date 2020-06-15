@@ -32,10 +32,10 @@ test('TextWalker.call should be called correctly', (t) => {
 test('TextWalker.read should be called correctly', (t) => {
   const nextResult = Symbol('nextResult')
   read.cb = () => nextResult // don't call it
-  const i = Symbol('i')
+  const count = Symbol('count')
   const w = inst()
-  t.deepEqual(w.read(i), nextResult)
-  t.deepEqual(read.calls.shift(), { args: [w] })
+  t.deepEqual(w.read(count), nextResult)
+  t.deepEqual(read.calls.shift(), { args: [w, count] })
 })
 
 test('TextWalker.skip should be called correctly correctly', (t) => {

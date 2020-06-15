@@ -27,8 +27,8 @@ export default class TextWalker {
     return peek(this, i, count)
   }
 
-  read() {
-    return read(this)
+  read(count) {
+    return read(this, count)
   }
 
   readUntil(strs) {

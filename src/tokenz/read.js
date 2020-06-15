@@ -1,9 +1,9 @@
 import { stubIfTest } from 'dummee'
 
-function read(walker) {
-  const c = walker.text[walker.pos]
-  walker.pos += 1
-  return c
+function read(walker, count = 1) {
+  const str =  walker.text.slice(walker.pos, walker.pos + count)
+  walker.pos += count
+  return str
 }
 
 export default stubIfTest(read)
