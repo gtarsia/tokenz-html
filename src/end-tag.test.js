@@ -1,10 +1,10 @@
 import test from 'ava'
-import TextWalker from './tokenizer/walker/TextWalker'
+import TextWalker from './tokenz/TextWalker'
 import endTag from './end-tag'
 import {
   WalkCancelledInterrupt,
   WalkFailedInterrupt,
-} from './tokenizer/walker/interrupts'
+} from './tokenz/interrupts'
 import { END_TAG } from './token-types'
 
 function run(t, text) {

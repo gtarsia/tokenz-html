@@ -1,10 +1,10 @@
 import test from 'ava'
 import startTag from './start-tag'
-import TextWalker from './tokenizer/walker/TextWalker'
+import TextWalker from './tokenz/TextWalker'
 import {
   WalkCancelledInterrupt,
   WalkFailedInterrupt,
-} from './tokenizer/walker/interrupts'
+} from './tokenz/interrupts'
 import { START_TAG } from './token-types'
 
 const type = START_TAG

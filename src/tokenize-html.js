@@ -1,5 +1,5 @@
 import { stubIfTest } from 'dummee'
-import TextWalker from './tokenizer/walker/TextWalker'
+import TextWalker from './tokenz/TextWalker'
 import startTag from './start-tag'
 import endTag from './end-tag'
 import text from './text'

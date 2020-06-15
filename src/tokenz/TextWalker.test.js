@@ -7,8 +7,8 @@ import skip from './skip'
 import readUntil from './read-until'
 import skipUntil from './skip-until'
 import skipUntilNot from './skip-until-not'
-import indexOfMany from '../string/index-of-many'
-import indexOfManyNot from '../string/index-of-many-not'
+import indexOfMany from './string/index-of-many'
+import indexOfManyNot from './string/index-of-many-not'
 import {
   WalkCancelledInterrupt,
   WalkFailedInterrupt,
