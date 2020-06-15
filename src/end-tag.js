@@ -7,7 +7,7 @@ const type = END_TAG
 function endTag(walker) {
   const token = { type }
   if (walker.peek(0, 2) !== '</' || !isAlpha(walker.peek(2))) {
-    walker.cancel('it should start with < or alpha character')
+    walker.cancel('end tag should start with <\ and an alpha character')
   }
   walker.skip(2) // skip '</'
   token.name = walker.readUntil([' ', '>'])
@@ -15,7 +15,7 @@ function endTag(walker) {
   if (walker.peek() === '>') {
     walker.skip()
   } else {
-    walker.failIfEndOfText('close tag never closed after reading name')
+    walker.failIfEnd('end tag never closed after reading name')
   }
   return token
 }

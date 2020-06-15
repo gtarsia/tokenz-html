@@ -107,12 +107,12 @@ test('TextWalker.fail should be called correctly', (t) => {
   t.deepEqual(err.message, msg)
 })
 
-test('TextWalker.failIfEndOfText should be called correctly', (t) => {
+test('TextWalker.failIfEnd should be called correctly', (t) => {
   const msg = 'msg'
   const w = inst()
   w.isEnd = dummee(() => true)
-  const err = t.throws(() => w.failIfEndOfText(msg), { instanceOf: WalkFailedInterrupt })
+  const err = t.throws(() => w.failIfEnd(msg), { instanceOf: WalkFailedInterrupt })
   t.deepEqual(err.message, msg)
   w.isEnd.cb = () => false
-  t.notThrows(() => w.failIfEndOfText(msg))
+  t.notThrows(() => w.failIfEnd(msg))
 })

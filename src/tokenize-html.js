@@ -1,7 +1,7 @@
 import { stubIfTest } from 'dummee'
 import TextWalker from './tokenizer/walker/TextWalker'
-import openTag from './open-tag'
-import closeTag from './close-tag'
+import startTag from './start-tag'
+import endTag from './end-tag'
 import text from './text'
 
 function tokenizeHtml(html) {
@@ -9,8 +9,8 @@ function tokenizeHtml(html) {
   const tokens = []
   while (!walker.isEnd()) {
     const token = walker.walk([
-      () => openTag(walker),
-      () => closeTag(walker),
+      () => startTag(walker),
+      () => endTag(walker),
       () => text(walker),
     ])
     if (token) {

@@ -5,7 +5,7 @@ import {
   WalkCancelledInterrupt,
   WalkFailedInterrupt,
 } from './tokenizer/walker/interrupts'
-import { CLOSE_TAG } from './token-types'
+import { END_TAG } from './token-types'
 
 function run(t, text) {
   const walker = new TextWalker(text)
@@ -14,7 +14,7 @@ function run(t, text) {
   return result
 }
 
-const type = CLOSE_TAG
+const type = END_TAG
 
 test('endTag should work correctly', (t) => {
   t.throws(() => run(t, '<'), { instanceOf: WalkCancelledInterrupt })

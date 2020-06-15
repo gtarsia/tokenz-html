@@ -64,7 +64,7 @@ export default class TextWalker {
     throw new WalkFailedInterrupt(msg)
   }
 
-  failIfEndOfText(msg) {
+  failIfEnd(msg) {
     if (this.isEnd()) {
       throw new WalkFailedInterrupt(msg)
     }

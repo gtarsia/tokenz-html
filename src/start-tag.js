@@ -12,21 +12,18 @@ export default function startTag(walker) {
   }
   walker.skip() // skip '<'
   token.name = walker.readUntil([' ', '>'])
-  walker.acceptIfEnd(token)
-  // if (walker.isEnd()) {
-  //   return token
-  // }
+  walker.returnIfEnd(token)
   while (true) {
     walker.skipUntilNot([' '])
-    walker.failIfEndOfText('start tag never closed after processing name')
+    walker.failIfEnd('start tag never closed after processing name')
     if (walker.peek() === '>') {
       walker.skip()
       return token
     }
     const name = walker.readUntil([' ', '>', '='])
-    walker.failIfEndOfText('start tag never closed after processing attribute name')
+    walker.failIfEnd('start tag never closed after processing attribute name')
     const attr = { name }
-    token.attrs.push(attr)
+    attrs.push(attr)
     if (walker.peek() !== '=') {
       continue
     }
@@ -38,11 +35,11 @@ export default function startTag(walker) {
     if (char === '"' || char === "'") {
       walker.skip() // skip the " or '
       attr.value = walker.readUntil(char)
-      walker.failIfEndOfText('start tag never closed while processing attribute value')
+      walker.failIfEnd('start tag never closed while processing attribute value')
       walker.read() // read the " or '
     } else {
       attr.value = walker.readUntil([' ', '>'])
-      walker.failIfEndOfText('start tag never closed while processing attribute value')
+      walker.failIfEnd('start tag never closed while processing attribute value')
     }
   }
 }
