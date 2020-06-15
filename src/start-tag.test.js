@@ -1,15 +1,15 @@
+/* eslint-disable quotes */
 import test from 'ava'
 import startTag from './start-tag'
 import TextWalker from './tokenz/TextWalker'
 import {
   WalkCancelledInterrupt,
-  WalkFailedInterrupt,
 } from './tokenz/interrupts'
 import { START_TAG } from './token-types'
 
 const type = START_TAG
 
-function token(name, attrs) {
+function token(name, attrs = []) {
   return { name, attrs, type }
 }
 
@@ -20,28 +20,45 @@ function run(t, text) {
   return result
 }
 
-test('startTag should work correctly', (t) => {
+test('startTag should cancel non matches', (t) => {
+  t.throws(() => run(t, ''), { instanceOf: WalkCancelledInterrupt })
+  t.throws(() => run(t, ' '), { instanceOf: WalkCancelledInterrupt })
   t.throws(() => run(t, '<'), { instanceOf: WalkCancelledInterrupt })
   t.throws(() => run(t, '<1'), { instanceOf: WalkCancelledInterrupt })
-  t.throws(() => run(t, '<a'), { instanceOf: WalkFailedInterrupt })
-  t.throws(() => run(t, '<aa'), { instanceOf: WalkFailedInterrupt })
-  t.deepEqual(run(t, '<aa>'), token('aa', []))
-  t.deepEqual(run(t, '<aa >'), token('aa', []))
-  t.deepEqual(run(t, '<aa a>'), token('aa', [{ name: 'a' }]))
-  t.deepEqual(run(t, '<aa a >'), token('aa', [{ name: 'a' }]))
-  t.deepEqual(run(t, '<aa a>'), token('aa', [{ name: 'a' }]))
-  t.deepEqual(run(t, '<aa a=>'), token('aa', [{ name: 'a' }]))
-  t.deepEqual(run(t, '<aa a= >'), token('aa', [{ name: 'a' }]))
-  t.deepEqual(run(t, '<aa a=a>'), token('aa', [{ name: 'a', value: 'a' }]))
-  t.deepEqual(run(t, '<aa a=a  >'), token('aa', [{ name: 'a', value: 'a' }]))
-  t.deepEqual(run(t, '<aa a="a">'), token('aa', [{ name: 'a', value: 'a' }]))
-  t.deepEqual(run(t, "<aa a='a'>"), token('aa', [{ name: 'a', value: 'a' }]))
-  t.deepEqual(run(t, "<aa a='a' >"), token('aa', [{ name: 'a', value: 'a' }]))
-  /* eslint-disable-next-line quotes */
-  t.deepEqual(run(t, `<aa a='a<">' >`), token('aa', [{ name: 'a', value: 'a<">' }]))
+})
+test('startTag should accept name only start tags', (t) => {
+  t.deepEqual(run(t, '<a'), token('a'))
+  t.deepEqual(run(t, '<ab'), token('ab'))
+  t.deepEqual(run(t, '<ab>'), token('ab'))
+  t.deepEqual(run(t, '<ab '), token('ab'))
+  t.deepEqual(run(t, '<ab >'), token('ab'))
+  t.deepEqual(run(t, '<ab  '), token('ab'))
+})
+
+test('startTag should accept tags with unvalued attributes', (t) => {
+  t.deepEqual(run(t, '<ab c'), token('ab', [{ name: 'c' }]))
+  t.deepEqual(run(t, '<ab c>'), token('ab', [{ name: 'c' }]))
+  t.deepEqual(run(t, '<ab c '), token('ab', [{ name: 'c' }]))
+  t.deepEqual(run(t, '<ab c >'), token('ab', [{ name: 'c' }]))
+  t.deepEqual(run(t, '<ab c=>'), token('ab', [{ name: 'c' }]))
+  t.deepEqual(run(t, '<ab c= >'), token('ab', [{ name: 'c' }]))
+  t.deepEqual(run(t, '<ab c=  '), token('ab', [{ name: 'c' }]))
+})
+
+test('startTag should accept tags with valued attributes', (t) => {
+  t.deepEqual(run(t, '<ab c=d'), token('ab', [{ name: 'c', value: 'd' }]))
+  t.deepEqual(run(t, '<ab c=d>'), token('ab', [{ name: 'c', value: 'd' }]))
+  t.deepEqual(run(t, '<ab c=d '), token('ab', [{ name: 'c', value: 'd' }]))
+  t.deepEqual(run(t, '<ab c=d >'), token('ab', [{ name: 'c', value: 'd' }]))
+  t.deepEqual(run(t, '<ab c=d  '), token('ab', [{ name: 'c', value: 'd' }]))
+  t.deepEqual(run(t, `<ab c="d">`), token('ab', [{ name: 'c', value: 'd' }]))
+  t.deepEqual(run(t, `<ab c='d'>`), token('ab', [{ name: 'c', value: 'd' }]))
+  t.deepEqual(run(t, `<ab c='d' >`), token('ab', [{ name: 'c', value: 'd' }]))
+  t.deepEqual(run(t, `<ab c='d<">' >`), token('ab', [{ name: 'c', value: 'd<">' }]))
   const attrs = [
-    { name: 'a', value: 'a' },
-    { name: 'b', value: 'b' },
+    { name: 'c', value: 'd' },
+    { name: 'e', value: 'f' },
   ]
-  t.deepEqual(run(t, "<aa a='a' b='b'>"), token('aa', attrs))
+  t.deepEqual(run(t, "<ab c='d' e='f' "), token('ab', attrs))
+  t.deepEqual(run(t, "<ab c='d' e='f'>"), token('ab', attrs))
 })

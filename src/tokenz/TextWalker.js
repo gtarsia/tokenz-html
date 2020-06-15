@@ -3,6 +3,7 @@ import read from './read'
 import skip from './skip'
 import readUntil from './read-until'
 import skipUntil from './skip-until'
+import match from './match'
 import skipUntilNot from './skip-until-not'
 import indexOfMany from './string/index-of-many'
 import indexOfManyNot from './string/index-of-many-not'
@@ -44,6 +45,10 @@ export default class TextWalker {
 
   skipUntilNot(strs) {
     return skipUntilNot(this, strs)
+  }
+
+  match(strs) {
+    return match(this, strs)
   }
 
   nextIndexOf(strs) {

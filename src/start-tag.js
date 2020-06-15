@@ -8,39 +8,39 @@ const type = START_TAG
 export default function startTag(walker) {
   const attrs = []
   const token = { attrs, type }
-  if (walker.peek() !== '<' || !isAlpha(walker.peek(1))) {
+  if (!walker.match('<') || !isAlpha(walker.peek(1))) {
     walker.cancel('it should start with < or alpha character')
   }
   walker.skip() // skip '<'
   token.name = walker.readUntil([...whitespaces, '>'])
-  walker.returnIfEnd(token)
+  if (walker.isEnd()) { return token }
   while (true) {
     walker.skipUntilNot(whitespaces)
-    walker.failIfEnd('start tag never closed after processing name')
-    if (walker.peek() === '>') {
+    if (walker.isEnd()) { return token } // permissive closure for skipping whitespace after name
+    if (walker.match('>')) {
       walker.skip()
       return token
     }
     const name = walker.readUntil([...whitespaces, '>', '='])
-    walker.failIfEnd('start tag never closed after processing attribute name')
     const attr = { name }
     attrs.push(attr)
-    if (walker.peek() !== '=') {
+    if (walker.isEnd()) { return token } // permissive closure while processing attr name
+    if (!walker.match('=')) {
       continue
     }
     walker.skip() // skip '='
-    if (walker.peek() === ' ' || walker.peek() === '>') {
+    if (walker.match([...whitespaces, '>'])) {
       continue
     }
     const char = walker.peek()
     if (char === '"' || char === "'") {
       walker.skip() // skip the " or '
       attr.value = walker.readUntil(char)
-      walker.failIfEnd('start tag never closed while processing attribute value')
+      if (walker.isEnd()) { return token } // permissive closure while processing attr value
       walker.read() // read the " or '
     } else {
       attr.value = walker.readUntil([...whitespaces, '>'])
-      walker.failIfEnd('start tag never closed while processing attribute value')
+      if (walker.isEnd()) { return token } // permissive closure while processing attr value
     }
   }
 }

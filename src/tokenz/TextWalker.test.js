@@ -7,6 +7,7 @@ import skip from './skip'
 import readUntil from './read-until'
 import skipUntil from './skip-until'
 import skipUntilNot from './skip-until-not'
+import match from './match'
 import indexOfMany from './string/index-of-many'
 import indexOfManyNot from './string/index-of-many-not'
 import {
@@ -72,6 +73,16 @@ test('TextWalker.skipUntilNot should be called correctly', (t) => {
   t.deepEqual(skipUntilNot.calls.shift(), { args: [w, firstArg] })
 })
 
+test('TextWalker.match should be called correctly', (t) => {
+  const result = Symbol('result')
+  match.cb = () => result // don't call it
+  const w = inst()
+  const firstArg = Symbol('firstArg')
+  debugger
+  t.deepEqual(w.match(firstArg), result)
+  t.deepEqual(match.calls.shift(), { args: [w, firstArg] })
+})
+
 test('TextWalker.nextIndexOf should be called correctly', (t) => {
   indexOfMany.cb = () => 3 // don't call it
   const w = inst()
@@ -91,7 +102,6 @@ test('TextWalker.nextIndexOfNot should be called correctly', (t) => {
   t.deepEqual(w.nextIndexOfNot(strs), 0)
   t.deepEqual(indexOfManyNot.calls.shift(), { args: [w.text, strs, w.pos] })
 })
-
 
 test('TextWalker.cancel should be called correctly', (t) => {
   const msg = 'msg'
