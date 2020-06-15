@@ -5,7 +5,11 @@ const type = TEXT
 
 function text(walker) {
   const token = { type }
-  token.text = walker.readUntil('<')
+  token.text = ''
+  if (walker.match('<')) {
+    token.text += walker.read()
+  }
+  token.text += walker.readUntil('<')
   return token
 }
 
