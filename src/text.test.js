@@ -1,6 +1,6 @@
 import test from 'ava'
 import text from './text'
-import TextWalker from './tokenz/TextWalker'
+import { TextWalker } from './tokenz/tokenz'
 import { TEXT as type } from './token-types'
 
 function run(txt) {

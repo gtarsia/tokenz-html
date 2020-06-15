@@ -1,5 +1,4 @@
 import test from 'ava'
-import dummee from 'dummee'
 import match from './match'
 
 const text = 'qwe1asd2zxc3'

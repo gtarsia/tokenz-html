@@ -1,10 +1,6 @@
 import test from 'ava'
-import TextWalker from './tokenz/TextWalker'
+import { TextWalker, WalkCancelledInterrupt } from './tokenz/tokenz'
 import endTag from './end-tag'
-import {
-  WalkCancelledInterrupt,
-  WalkFailedInterrupt,
-} from './tokenz/interrupts'
 import { END_TAG } from './token-types'
 
 function run(t, text) {

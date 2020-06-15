@@ -1,5 +1,4 @@
 import { stubIfTest } from 'dummee'
-import { WalkCancelledInterrupt } from './tokenz/interrupts'
 import { COMMENT as type } from './token-types'
 
 function comment(walker) {

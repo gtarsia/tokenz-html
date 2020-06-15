@@ -1,5 +1,4 @@
 /* eslint-disable no-constant-condition, no-continue */
-import isAlpha from './string/is-alpha'
 import { START_TAG } from './token-types'
 import { whitespaces, whitespacesWithClose } from './chars'
 

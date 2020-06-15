@@ -1,7 +1,6 @@
 import test from 'ava'
 import comment from './comment'
-import TextWalker from './tokenz/TextWalker'
-import { WalkCancelledInterrupt } from './tokenz/interrupts'
+import { TextWalker, WalkCancelledInterrupt } from './tokenz/tokenz'
 import { COMMENT as type } from './token-types'
 
 function run(txt) {
