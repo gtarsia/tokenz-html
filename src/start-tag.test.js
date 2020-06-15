@@ -24,9 +24,10 @@ test('startTag should cancel non matches', (t) => {
   t.throws(() => run(t, ''), { instanceOf: WalkCancelledInterrupt })
   t.throws(() => run(t, ' '), { instanceOf: WalkCancelledInterrupt })
   t.throws(() => run(t, '<'), { instanceOf: WalkCancelledInterrupt })
-  t.throws(() => run(t, '<1'), { instanceOf: WalkCancelledInterrupt })
+  t.throws(() => run(t, '<>'), { instanceOf: WalkCancelledInterrupt })
 })
 test('startTag should accept name only start tags', (t) => {
+  t.deepEqual(run(t, '<1'), token('1'))
   t.deepEqual(run(t, '<a'), token('a'))
   t.deepEqual(run(t, '<ab'), token('ab'))
   t.deepEqual(run(t, '<ab>'), token('ab'))

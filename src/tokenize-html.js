@@ -9,8 +9,8 @@ function tokenizeHtml(html) {
   const tokens = []
   while (!walker.isEnd()) {
     const token = walker.walk([
-      () => startTag(walker),
       () => endTag(walker),
+      () => startTag(walker),
       () => text(walker),
     ])
     if (token) {

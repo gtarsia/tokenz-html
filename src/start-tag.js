@@ -5,13 +5,14 @@ import { whitespaces } from './chars'
 
 const type = START_TAG
 
+const whitespacesWithClose = [...whitespaces, '>']
+
 export default function startTag(walker) {
   const attrs = []
   const token = { attrs, type }
-  if (!walker.match('<') || !isAlpha(walker.peek(1))) {
-    walker.cancel('it should start with < or alpha character')
+  if (walker.read() !== '<' || walker.isEnd() || walker.match(whitespacesWithClose)) {
+    walker.cancel('it should start with < followed by a non whitespace or > character')
   }
-  walker.skip() // skip '<'
   token.name = walker.readUntil([...whitespaces, '>'])
   if (walker.isEnd()) { return token }
   while (true) {
