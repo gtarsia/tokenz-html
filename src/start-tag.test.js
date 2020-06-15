@@ -63,3 +63,14 @@ test('startTag should accept tags with valued attributes', (t) => {
   t.deepEqual(run(t, "<ab c='d' e='f' "), token('ab', attrs))
   t.deepEqual(run(t, "<ab c='d' e='f'>"), token('ab', attrs))
 })
+
+test('startTag should leave pos correctly', (t) => {
+  const walker = new TextWalker("<ab c='d' e='f'>zxc")
+  const result = startTag(walker)
+  const attrs = [
+    { name: 'c', value: 'd' },
+    { name: 'e', value: 'f' },
+  ]
+  t.deepEqual(result, token('ab', attrs))
+  t.deepEqual(walker.match('zxc'), true)
+})
