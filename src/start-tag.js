@@ -1,6 +1,7 @@
 /* eslint-disable no-constant-condition, no-continue */
 import isAlpha from './string/is-alpha'
 import { START_TAG } from './token-types'
+import { whitespaces } from './chars'
 
 const type = START_TAG
 
@@ -11,16 +12,16 @@ export default function startTag(walker) {
     walker.cancel('it should start with < or alpha character')
   }
   walker.skip() // skip '<'
-  token.name = walker.readUntil([' ', '>'])
+  token.name = walker.readUntil([...whitespaces, '>'])
   walker.returnIfEnd(token)
   while (true) {
-    walker.skipUntilNot([' '])
+    walker.skipUntilNot(whitespaces)
     walker.failIfEnd('start tag never closed after processing name')
     if (walker.peek() === '>') {
       walker.skip()
       return token
     }
-    const name = walker.readUntil([' ', '>', '='])
+    const name = walker.readUntil([...whitespaces, '>', '='])
     walker.failIfEnd('start tag never closed after processing attribute name')
     const attr = { name }
     attrs.push(attr)
@@ -38,7 +39,7 @@ export default function startTag(walker) {
       walker.failIfEnd('start tag never closed while processing attribute value')
       walker.read() // read the " or '
     } else {
-      attr.value = walker.readUntil([' ', '>'])
+      attr.value = walker.readUntil([...whitespaces, '>'])
       walker.failIfEnd('start tag never closed while processing attribute value')
     }
   }
