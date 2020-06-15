@@ -1,5 +1,5 @@
 import test from 'ava'
-import { TextWalker, WalkCancelledInterrupt } from './tokenz/tokenz'
+import { TextWalker, WalkCancelledInterrupt } from 'tokenz'
 import endTag from './end-tag'
 import { END_TAG } from './token-types'
 

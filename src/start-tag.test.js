@@ -1,7 +1,7 @@
 /* eslint-disable quotes */
 import test from 'ava'
+import { TextWalker, WalkCancelledInterrupt } from 'tokenz'
 import startTag from './start-tag'
-import { TextWalker, WalkCancelledInterrupt } from './tokenz/tokenz'
 import { START_TAG } from './token-types'
 
 const type = START_TAG

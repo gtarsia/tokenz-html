@@ -24,7 +24,8 @@
   },
   "dependencies": {
     "dummee": "^1.2.0",
-    "esm": "^3.2.25"
+    "esm": "^3.2.25",
+    "tokenz": "^1.0.0"
   },
   "ava": {
     "files": [
