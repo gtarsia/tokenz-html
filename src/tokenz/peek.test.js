@@ -30,10 +30,11 @@ test('peek with count > 1 should call slice on text', (t) => {
   const i = 3
   const result = Symbol('result')
   const pos = 4
-  const slice = dummee()
+  const slice = dummee(() => result)
   const text = { [i + pos]: result, slice }
   const walker = { text, pos }
   const count = 4
+  debugger
   t.deepEqual(peek(walker, i, count), result)
-  t.deepEqual(slice.calls, [])
+  t.deepEqual(slice.calls, [{ args: [i + pos, i + count + pos] }])
 })
