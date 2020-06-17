@@ -1,7 +1,7 @@
 dependencies:
   dummee: 1.2.0
   esm: 3.2.25
-  tokenz: 1.0.0
+  tokenz: 0.1.0-0
 devDependencies:
   ava: 3.8.2
   babel-eslint: 10.1.0_eslint@6.8.0
@@ -3234,13 +3234,13 @@ packages:
       node: '>=8.0'
     resolution:
       integrity: sha512-65P7iz6X5yEr1cwcgvQxbbIw7Uk3gOy5dIdtZ4rDveLqhrdJP+Li/Hx6tyK0NEb+2GCyneCMJiGqrADCSNk8sQ==
-  /tokenz/1.0.0:
+  /tokenz/0.1.0-0:
     dependencies:
       dummee: 1.2.0
       esm: 3.2.25
     dev: false
     resolution:
-      integrity: sha512-1vTgaBhWi18CmU6YWV7xG/aaGDeikdWZqFLLI9FiPJzrhdPw51TcXmE4JBTbuZIc+BigfvfBruuLlOXVed2JVQ==
+      integrity: sha512-Gw1cMZeBciQqwYcR9i6TFLDPPFB/w81jwC5JdzVGtFhQ7ZXeR60VWaWZ4YXXpWoShoC2RPA6xLEDr1agG4ZuDA==
   /trim-off-newlines/1.0.1:
     dev: true
     engines:
@@ -3480,4 +3480,4 @@ specifiers:
   eslint-watch-better: ^0.1.0
   esm: ^3.2.25
   nyc: ^15.1.0
-  tokenz: ^1.0.0
+  tokenz: ^0.1.0-0

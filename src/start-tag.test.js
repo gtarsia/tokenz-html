@@ -1,6 +1,6 @@
 /* eslint-disable quotes */
 import test from 'ava'
-import { TextWalker, WalkCancelledInterrupt } from 'tokenz'
+import { TextWalker } from 'tokenz'
 import startTag from './start-tag'
 import { START_TAG } from './token-types'
 
@@ -10,18 +10,18 @@ function token(name, attrs = []) {
   return { name, attrs, type }
 }
 
-function run(t, text) {
+function run(t, text, isEnd = true) {
   const walker = new TextWalker(text)
   const result = startTag(walker)
-  t.deepEqual(walker.isEnd(), true)
+  t.deepEqual(walker.isEnd(), isEnd)
   return result
 }
 
 test('startTag should cancel non matches', (t) => {
-  t.throws(() => run(t, ''), { instanceOf: WalkCancelledInterrupt })
-  t.throws(() => run(t, ' '), { instanceOf: WalkCancelledInterrupt })
-  t.throws(() => run(t, '<'), { instanceOf: WalkCancelledInterrupt })
-  t.throws(() => run(t, '<>'), { instanceOf: WalkCancelledInterrupt })
+  t.deepEqual(run(t, ''), null)
+  t.deepEqual(run(t, ' ', true), null)
+  t.deepEqual(run(t, '<', true), null)
+  t.deepEqual(run(t, '<>', false), null)
 })
 test('startTag should accept name only start tags', (t) => {
   t.deepEqual(run(t, '<1'), token('1'))

@@ -10,7 +10,8 @@ function endTag(walker) {
   if (walker.read(2) !== start
     || walker.isEnd()
     || walker.match(whitespacesWithClose, start.length)) {
-    walker.cancel('end tag should start with </ and an alpha character')
+    // end tag should start with </ and an alpha character
+    return null
   }
   token.name = walker.readUntil(whitespacesWithClose)
   walker.skipUntil('>') // this ignores everything

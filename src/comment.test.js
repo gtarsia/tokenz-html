@@ -1,5 +1,5 @@
 import test from 'ava'
-import { TextWalker, WalkCancelledInterrupt } from 'tokenz'
+import { TextWalker } from 'tokenz'
 import comment from './comment'
 import { COMMENT as type } from './token-types'
 
@@ -9,9 +9,9 @@ function run(txt) {
 }
 
 test('comment should work correctly', (t) => {
-  t.throws(() => run(''), { instanceOf: WalkCancelledInterrupt })
-  t.throws(() => run('<'), { instanceOf: WalkCancelledInterrupt })
-  t.throws(() => run('<!-'), { instanceOf: WalkCancelledInterrupt })
+  t.deepEqual(run(''), null)
+  t.deepEqual(run('<'), null)
+  t.deepEqual(run('<!-'), null)
   t.deepEqual(run('<!--'), { text: '', type })
   t.deepEqual(run('<!--qweasd'), { text: 'qweasd', type })
   t.deepEqual(run('<!--qweasd--'), { text: 'qweasd--', type })

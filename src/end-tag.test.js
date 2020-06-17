@@ -1,5 +1,5 @@
 import test from 'ava'
-import { TextWalker, WalkCancelledInterrupt } from 'tokenz'
+import { TextWalker } from 'tokenz'
 import endTag from './end-tag'
 import { END_TAG } from './token-types'
 
@@ -13,8 +13,8 @@ function run(t, text) {
 const type = END_TAG
 
 test('endTag should work correctly', (t) => {
-  t.throws(() => run(t, '<'), { instanceOf: WalkCancelledInterrupt })
-  t.throws(() => run(t, '</'), { instanceOf: WalkCancelledInterrupt })
+  t.deepEqual(run(t, '<'), null)
+  t.deepEqual(run(t, '</'), null)
   t.deepEqual(run(t, '</a'), { name: 'a', type })
   t.deepEqual(run(t, '</a qwe'), { name: 'a', type })
   t.deepEqual(run(t, '</a>'), { name: 'a', type })

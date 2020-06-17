@@ -8,7 +8,8 @@ export default function startTag(walker) {
   const attrs = []
   const token = { attrs, type }
   if (walker.read() !== '<' || walker.isEnd() || walker.match(whitespacesWithClose)) {
-    walker.cancel('it should start with < followed by a non whitespace or > character')
+    // it should start with < followed by a non whitespace or > character
+    return null
   }
   token.name = walker.readUntil(whitespacesWithClose)
   if (walker.isEnd()) { return token }

@@ -6,7 +6,8 @@ function comment(walker) {
   const start = '<!--'
   const close = '-->'
   if (!walker.match(start)) {
-    walker.cancel(`comments should start with ${start}`)
+    // comments should start with <!--
+    return null
   }
   walker.read(start.length)
   token.text = walker.readUntil(close)
