@@ -5,6 +5,7 @@
   "module": "src/tokenize-html.js",
   "files": [
     "esm.js",
+    "tokenz-html.js",
     "src"
   ],
   "license": "MIT",
