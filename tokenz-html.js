@@ -1,2 +1,2 @@
 
-export default './src/tokenize-html'
+export { default } from './src/tokenize-html'
