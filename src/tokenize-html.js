@@ -4,12 +4,15 @@ import startTag from './start-tag'
 import endTag from './end-tag'
 import text from './text'
 import doctype from './doctype'
+import comment from './comment'
+
 function tokenizeHtml(html) {
   const walker = new TextWalker(html)
   const tokens = []
   while (!walker.isEnd()) {
     const token = walker.walk([
       () => doctype(walker),
+      () => comment(walker),
       () => endTag(walker),
       () => startTag(walker),
       () => text(walker),
