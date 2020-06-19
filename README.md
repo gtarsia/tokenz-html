@@ -15,14 +15,21 @@ Install package `html-tokenz` with npm/yarn/pnpm.
 ## Usage
 
 ```javascript
-import { tokenize, tokenTypes } from 'tokenz-html'
+import tokenizeHtml from 'tokenz-html' // or require
 
 tokenize(`<a qwe=asd><b><!-- hey there --></a`)
 /* [
-  { name: 'a', attrs: [{ name: 'qwe', value: 'asd' }, type: 'start_tag' ] },
-  { name: 'b', type: 'start_tag' },
-  { text: ' hey there ', type: 'comment' },
-  { name: 'a', type: 'close_tag' },
+  { name: 'a', attrs: [{ name: 'qwe', value: 'asd' }, tokenType: 'start_tag' ] },
+  { name: 'b', tokenType: 'start_tag' },
+  { text: ' hey there ', tokenType: 'comment' },
+  { name: 'a', tokenType: 'close_tag' },
 ]
 */
+```
+
+You can also get the token types, check `src/token-types.js` to see what types are there:
+```javascript
+const { START_TAG } = require('tokenz-html/token-types')
+// or use es modules to get error checks
+import { START_TAG } from 'tokenz-html/src/token-types'
 ```
