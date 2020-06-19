@@ -6,8 +6,8 @@ import { START_TAG } from './token-types'
 
 const type = START_TAG
 
-function token(name, attrs = []) {
-  return { name, attrs, type }
+function token(tagName, attrs = []) {
+  return { tagName, attrs, type }
 }
 
 function run(t, text, isEnd = true) {
@@ -23,7 +23,7 @@ test('startTag should cancel non matches', (t) => {
   t.deepEqual(run(t, '<', true), null)
   t.deepEqual(run(t, '<>', false), null)
 })
-test('startTag should accept name only start tags', (t) => {
+test('startTag should accept tagName only start tags', (t) => {
   t.deepEqual(run(t, '<1'), token('1'))
   t.deepEqual(run(t, '<a'), token('a'))
   t.deepEqual(run(t, '<ab'), token('ab'))

@@ -13,7 +13,7 @@ function endTag(walker) {
     // end tag should start with </ and an alpha character
     return null
   }
-  token.name = walker.readUntil(whitespacesWithClose)
+  token.tagName = walker.readUntil(whitespacesWithClose)
   walker.skipUntil('>') // this ignores everything
   if (walker.match('>')) {
     walker.skip()

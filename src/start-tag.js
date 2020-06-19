@@ -11,11 +11,12 @@ export default function startTag(walker) {
     // it should start with < followed by a non whitespace or > character
     return null
   }
-  token.name = walker.readUntil(whitespacesWithClose)
+  token.tagName = walker.readUntil(whitespacesWithClose)
   if (walker.isEnd()) { return token }
   while (true) {
     walker.skipUntilNot(whitespaces)
-    if (walker.isEnd()) { return token } // permissive closure after skipping whitespace after name
+    // permissive closure after skipping whitespace after tag name
+    if (walker.isEnd()) { return token }
     if (walker.match('>')) {
       walker.skip()
       return token
