@@ -2,11 +2,11 @@
 import { START_TAG } from './token-types'
 import { whitespaces, whitespacesWithClose } from './chars'
 
-const type = START_TAG
+const tokenType = START_TAG
 
 export default function startTag(walker) {
   const attrs = []
-  const token = { attrs, type }
+  const token = { attrs, tokenType }
   if (walker.read() !== '<' || walker.isEnd() || walker.match(whitespacesWithClose)) {
     // it should start with < followed by a non whitespace or > character
     return null

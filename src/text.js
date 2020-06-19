@@ -1,10 +1,10 @@
 import { stubIfTest } from 'dummee'
 import { TEXT } from './token-types'
 
-const type = TEXT
+const tokenType = TEXT
 
 function text(walker) {
-  const token = { type }
+  const token = { tokenType }
   token.text = ''
   if (walker.match('<')) {
     token.text += walker.read()

@@ -1,5 +1,5 @@
 import { stubIfTest } from 'dummee'
-import { DOCTYPE as type } from './token-types'
+import { DOCTYPE as tokenType } from './token-types'
 
 function doctype(walker) {
   if (walker.read(2) !== '<!') {
@@ -10,7 +10,7 @@ function doctype(walker) {
   }
   walker.skip('doctype'.length)
   const contents = walker.readUntil(['\r\n', '\n', '>'])
-  return { type, contents }
+  return { tokenType, contents }
 }
 
 export default stubIfTest(doctype)

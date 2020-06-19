@@ -1,8 +1,8 @@
 import { stubIfTest } from 'dummee'
-import { COMMENT as type } from './token-types'
+import { COMMENT as tokenType } from './token-types'
 
 function comment(walker) {
-  const token = { type }
+  const token = { tokenType }
   const start = '<!--'
   const close = '-->'
   if (!walker.match(start)) {

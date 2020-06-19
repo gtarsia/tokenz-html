@@ -1,7 +1,7 @@
 import test from 'ava'
 import { TextWalker } from 'tokenz'
 import text from './text'
-import { TEXT as type } from './token-types'
+import { TEXT as tokenType } from './token-types'
 
 function run(txt) {
   const w = new TextWalker(txt)
@@ -9,7 +9,7 @@ function run(txt) {
 }
 
 test('text should work correctly', (t) => {
-  t.deepEqual(run('<'), { text: '<', type })
-  t.deepEqual(run('<<'), { text: '<', type })
-  t.deepEqual(run('<a<<'), { text: '<a', type })
+  t.deepEqual(run('<'), { text: '<', tokenType })
+  t.deepEqual(run('<<'), { text: '<', tokenType })
+  t.deepEqual(run('<a<<'), { text: '<a', tokenType })
 })

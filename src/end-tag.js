@@ -2,10 +2,10 @@ import { stubIfTest } from 'dummee'
 import { END_TAG } from './token-types'
 import { whitespacesWithClose } from './chars'
 
-const type = END_TAG
+const tokenType = END_TAG
 
 function endTag(walker) {
-  const token = { type }
+  const token = { tokenType }
   const start = '</'
   if (walker.read(2) !== start
     || walker.isEnd()

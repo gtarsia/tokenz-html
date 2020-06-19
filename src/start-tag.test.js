@@ -4,10 +4,10 @@ import { TextWalker } from 'tokenz'
 import startTag from './start-tag'
 import { START_TAG } from './token-types'
 
-const type = START_TAG
+const tokenType = START_TAG
 
 function token(tagName, attrs = []) {
-  return { tagName, attrs, type }
+  return { tagName, attrs, tokenType }
 }
 
 function run(t, text, isEnd = true) {
