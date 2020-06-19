@@ -1,2 +1,4 @@
+import * as tTypes from './src/token-types'
 
-export { default } from './src/tokenize-html'
+export { default as tokenizeHtml } from './src/tokenize-html'
+export const tokenTypes = tTypes
