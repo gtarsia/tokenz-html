@@ -19,10 +19,10 @@ import tokenizeHtml from 'tokenz-html' // or require
 
 tokenize(`<a qwe=asd><b><!-- hey there --></a`)
 /* [
-  { name: 'a', attrs: [{ name: 'qwe', value: 'asd' }, tokenType: 'start_tag' ] },
-  { name: 'b', tokenType: 'start_tag' },
-  { text: ' hey there ', tokenType: 'comment' },
-  { name: 'a', tokenType: 'close_tag' },
+  { name: 'a', attrs: [{ name: 'qwe', value: 'asd' }, tokenType: 'start_tag_token' ] },
+  { name: 'b', tokenType: 'start_tag_token' },
+  { text: ' hey there ', tokenType: 'comment_token' },
+  { name: 'a', tokenType: 'close_tag_token' },
 ]
 */
 ```
