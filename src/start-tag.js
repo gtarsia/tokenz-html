@@ -1,8 +1,6 @@
 /* eslint-disable no-constant-condition, no-continue */
-import { START_TAG } from './token-types'
+import { START_TAG_TOKEN as tokenType } from './token-types'
 import { whitespaces, whitespacesWithClose } from './chars'
-
-const tokenType = START_TAG
 
 export default function startTag(walker) {
   const attrs = []

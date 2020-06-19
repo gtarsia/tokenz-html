@@ -2,9 +2,7 @@
 import test from 'ava'
 import { TextWalker } from 'tokenz'
 import startTag from './start-tag'
-import { START_TAG } from './token-types'
-
-const tokenType = START_TAG
+import { START_TAG_TOKEN as tokenType } from './token-types'
 
 function token(tagName, attrs = []) {
   return { tagName, attrs, tokenType }

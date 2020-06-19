@@ -1,5 +1,5 @@
 import { stubIfTest } from 'dummee'
-import { COMMENT as tokenType } from './token-types'
+import { COMMENT_TOKEN as tokenType } from './token-types'
 
 function comment(walker) {
   const token = { tokenType }

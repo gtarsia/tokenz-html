@@ -1,7 +1,7 @@
 import test from 'ava'
 import { TextWalker } from 'tokenz'
 import doctype from './doctype'
-import { DOCTYPE as tokenType } from './token-types'
+import { DOCTYPE_TOKEN as tokenType } from './token-types'
 
 test('doctype should work correctly', (t) => {
   t.deepEqual(doctype(new TextWalker('<!DOCTYPE html>')), { contents: ' html', tokenType })

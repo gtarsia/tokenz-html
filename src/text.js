@@ -1,7 +1,5 @@
 import { stubIfTest } from 'dummee'
-import { TEXT } from './token-types'
-
-const tokenType = TEXT
+import { TEXT_TOKEN as tokenType } from './token-types'
 
 function text(walker) {
   const token = { tokenType }

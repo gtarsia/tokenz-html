@@ -1,7 +1,7 @@
 import test from 'ava'
 import { TextWalker } from 'tokenz'
 import comment from './comment'
-import { COMMENT as tokenType } from './token-types'
+import { COMMENT_TOKEN as tokenType } from './token-types'
 
 function run(txt) {
   const w = new TextWalker(txt)

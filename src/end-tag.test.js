@@ -1,7 +1,7 @@
 import test from 'ava'
 import { TextWalker } from 'tokenz'
 import endTag from './end-tag'
-import { END_TAG } from './token-types'
+import { END_TAG_TOKEN as tokenType } from './token-types'
 
 function run(t, text) {
   const walker = new TextWalker(text)
@@ -9,8 +9,6 @@ function run(t, text) {
   t.deepEqual(walker.isEnd(), true)
   return result
 }
-
-const tokenType = END_TAG
 
 test('endTag should work correctly', (t) => {
   t.deepEqual(run(t, '<'), null)

@@ -1,5 +1,5 @@
 import { stubIfTest } from 'dummee'
-import { DOCTYPE as tokenType } from './token-types'
+import { DOCTYPE_TOKEN as tokenType } from './token-types'
 
 function doctype(walker) {
   if (walker.read(2) !== '<!') {

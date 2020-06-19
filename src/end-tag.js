@@ -1,8 +1,6 @@
 import { stubIfTest } from 'dummee'
-import { END_TAG } from './token-types'
+import { END_TAG_TOKEN as tokenType } from './token-types'
 import { whitespacesWithClose } from './chars'
-
-const tokenType = END_TAG
 
 function endTag(walker) {
   const token = { tokenType }
