@@ -10,7 +10,7 @@
   ],
   "license": "MIT",
   "scripts": {
-    "esw": "esw src",
+    "esw": "esw src tokenz-html.js",
     "fix": "eslint --fix src '**/*.js'",
     "test": "nyc ava",
     "test:watch": "ava --watch"
@@ -21,7 +21,7 @@
     "eslint": "^6.8.0",
     "eslint-config-airbnb-base": "^13.1.0",
     "eslint-plugin-import": "^2.16.0",
-    "eslint-watch-better": "^0.1.0",
+    "eslint-watch-better": "^0.1.1",
     "nyc": "^15.1.0"
   },
   "dependencies": {

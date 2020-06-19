@@ -8,7 +8,7 @@ devDependencies:
   eslint: 6.8.0
   eslint-config-airbnb-base: 13.2.0_20820c8a3f39b0fa40f0510090adf14c
   eslint-plugin-import: 2.21.2_eslint@6.8.0
-  eslint-watch-better: 0.1.0_eslint@6.8.0
+  eslint-watch-better: 0.1.1_eslint@6.8.0
   nyc: 15.1.0
 lockfileVersion: 5.1
 packages:
@@ -1159,7 +1159,7 @@ packages:
       node: '>=4'
     resolution:
       integrity: sha512-WFb4ihckKil6hu3Dp798xdzSfddwKKU3+nGniKF6HfeW6OLd2OUDEPP7TcHtB5+QXOKg2s6B2DaMPE1Nn/kxKQ==
-  /eslint-watch-better/0.1.0_eslint@6.8.0:
+  /eslint-watch-better/0.1.1_eslint@6.8.0:
     dependencies:
       ansi-escapes: 4.3.1
       chokidar: 3.4.0
@@ -1171,7 +1171,7 @@ packages:
     peerDependencies:
       eslint: 6.x
     resolution:
-      integrity: sha512-505mSDUm/uMLw8i/jOn8ZFXBrp0AtG/DUnLQVC1bkmLwSxIiGT55EztIUDyyQzRNFpdOVa51v3W2A8BLiH3XlQ==
+      integrity: sha512-FGOpU8r6iHQf0wkEba5bMocedumfdYKcQJM1pnzCMTuJ97d5sNB3WzGbZuFj3mPnPZH+MA/3kGi7g4kKi45ZkA==
   /eslint/6.8.0:
     dependencies:
       '@babel/code-frame': 7.10.1
@@ -3477,7 +3477,7 @@ specifiers:
   eslint: ^6.8.0
   eslint-config-airbnb-base: ^13.1.0
   eslint-plugin-import: ^2.16.0
-  eslint-watch-better: ^0.1.0
+  eslint-watch-better: ^0.1.1
   esm: ^3.2.25
   nyc: ^15.1.0
   tokenz: ^0.1.0-0
